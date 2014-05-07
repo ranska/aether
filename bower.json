@@ -1,0 +1,21 @@
+{
+  "name": "aether",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ranska/rang",
+  "authors": [
+    "Pierre-Alexandre Piarulli <go@rubyrock.me>"
+  ],
+  "description": "Play with coffeescript class and methods injection on window browser",
+  "main": "aether.js.coffee",
+  "keywords": [
+    "angularjs",
+    "coffeescript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec"
+  ]
+}
