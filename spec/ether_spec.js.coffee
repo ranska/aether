@@ -1,31 +1,16 @@
-
-
-class @Mimo 
-  @drt: ->
-    (scope, element) ->
-      element.addClass "plain"
-
-@['Dud'] = class
-
-hi = ->
-  'hi'
-  console.log @name
-  console.log @toString()
-
-describe "Ether:\n", ->
+describe "AEther:\n", ->
   beforeEach ->
-  describe 'actionService', ->
 
-    describe 'Dud', ->
+  describe 'E can find *Ctrl classes', ->
+    it 'find by end pattern', ->
+      A['Nyx'] = class
+      A['NyxSrv'] = class
+      klasses = A.Ether
+        .find finish_by: 'Srv'
+      expect(Object.keys(klasses).length).toBe 1
+      expect(Object.keys(klasses)[0]).toBe 'NyxSrv'
 
-      it 'return something', ->
-        Dud.hi = hi
-        Dud.hi()
-        window.E.ls_methods Dud
-        #expect(element.html()).toBe "4"
-        #
-  xdescribe 'E can find *Ctrl classes', ->
-
+  # add instance or class methods
   xdescribe 'E can add methods to *Pattern classes', ->
   xdescribe 'E can create _Class with .nick_name', ->
   xdescribe 'bless nick_name (add methods to *Pattern classes', ->
