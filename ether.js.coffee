@@ -12,10 +12,17 @@ class @Ether
           for name, obj of window.A
             if name.match(/[A-Z]*[^A-Z]+/g)[-1..][0] is pattern
               founded[name] = obj
-
         else
           console.log 'AEther keep blind'
     founded
+
+  @add_member: (klasses, functions) ->
+    for klass, def of klasses
+      for fun, body of functions
+        tot = new window.A[klass]
+        window.A[klass].prototype[fun] = body
+
+
 
 class @A.Ether
 @A.Ether = @Ether
