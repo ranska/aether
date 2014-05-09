@@ -17,14 +17,21 @@ class @Ether
     founded
 
   @add_member: (klasses, functions) ->
-    for klass, def of klasses
-      for fun, body of functions
-        window.A[klass].prototype[fun] = body
+    @bash @add_to_instance, klasses, functions
 
   @add_class_methods: (klasses, functions) ->
+    @bash @add_to_class, klasses, functions
+
+  @bash: (add_to_x, klasses, functions) ->
     for klass, def of klasses
       for fun, body of functions
-        window.A[klass].constructor.prototype[fun] = body
+        add_to_x klass, fun, body
+
+  @add_to_instance: (klass, fun, body) ->
+    window.A[klass].prototype[fun] = body
+
+  @add_to_class: (klass, fun, body) ->
+    window.A[klass].constructor.prototype[fun] = body
 
 class @A.Ether
 @A.Ether = @Ether
