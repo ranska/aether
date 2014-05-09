@@ -19,11 +19,12 @@ class @Ether
   @add_member: (klasses, functions) ->
     for klass, def of klasses
       for fun, body of functions
-        tot = new window.A[klass]
         window.A[klass].prototype[fun] = body
 
-
+  @add_class_methods: (klasses, functions) ->
+    for klass, def of klasses
+      for fun, body of functions
+        window.A[klass].constructor.prototype[fun] = body
 
 class @A.Ether
 @A.Ether = @Ether
-
