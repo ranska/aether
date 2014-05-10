@@ -16,23 +16,28 @@ class @Ether
           console.log 'AEther keep blind'
     founded
 
-
   @add_member: (klasses, functions) ->
     @bash @add_to_instance, klasses, functions
 
   @add_class_methods: (klasses, functions) ->
     @bash @add_to_class, klasses, functions
 
-  @bash: (add_to_x, klasses, functions) ->
+  @run_class_methods: (klasses, functions) ->
+    @bash @run_to_class, klasses, functions
+
+  @bash: (call_to_x, klasses, functions) ->
     for klass, def of klasses
       for fun, body of functions
-        add_to_x klass, fun, body
+        call_to_x klass, fun, body
 
   @add_to_instance: (klass, fun, body) =>
     @nyx[klass]::[fun] = body
 
   @add_to_class: (klass, fun, body) =>
     @nyx[klass].constructor::[fun] = body
+
+  @run_to_class: (klass, fun, params...) =>
+    @nyx[klass][fun](params...)
 
   @nyx: window.A
 

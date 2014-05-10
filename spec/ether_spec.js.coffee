@@ -1,10 +1,10 @@
 describe "AEther:\n", ->
   beforeEach ->
+    A['Nyx'] = class
+    A['NyxSrv'] = class
 
   describe 'E can find *Ctrl classes', ->
     it 'find by end pattern', ->
-      A['Nyx'] = class
-      A['NyxSrv'] = class
       A.NyxSrv.constructor.prototype.hi = -> console.log 'hi'
       klasses = A.Ether
         .find finish_by: 'Srv'
@@ -13,7 +13,6 @@ describe "AEther:\n", ->
 
   describe 'E can add methods to *Pattern classes', ->
     beforeEach ->
-      A['NyxSrv'] = class
       @functions =
         add: (a, b) ->
           a + b
@@ -34,13 +33,31 @@ describe "AEther:\n", ->
       expect(A.NyxSrv.add 3, 4).toBe 7
       # TODO list objet methods nyxSrv.methods
       
+  describe 'can run class methods before and after blessing', ->
+    it 'call class methods', ->
+      A['AthenaSrv'] = class
+      @klasses = A.Ether.find finish_by: 'Srv'
+      @functions =
+        count: 0
+        up_count: ->
+          @count += 1
+      expect(A.AthenaSrv.count?).toBe false
+      A.Ether.add_class_methods @klasses, @functions
+      fun_call = { up_count: {} }
+      expect(A.AthenaSrv.count).toBe 0
+      expect(A.NyxSrv.count).toBe 0
+      A.Ether.run_class_methods @klasses, fun_call
+      expect(A.NyxSrv.count).toBe 1
+      expect(A.AthenaSrv.count).toBe 1
+
+    xit 'call instance methods', ->
+
   xdescribe 'E can create _Class with .nick_name', ->
   xdescribe 'bless nick_name (add methods to *Pattern classes', ->
 
   xdescribe 'bless methods can be store in array or class (angel)', ->
   xdescribe 'should not add 2 time (blessed state)'
 
-  xdescribe 'can run class methods before and after blessing'
 
 
 
