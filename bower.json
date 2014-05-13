@@ -19,6 +19,7 @@
     "components",
     "bower.json",
     "README.md",
+    "LICENSE.txt",
     "karma.conf.js",
     "package.json",
     "spec"
